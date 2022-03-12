@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { TuApp } from "./tu-app";
+import { App } from "./app";
 
 ReactDOM.render(
   <React.StrictMode>
-    <TuApp />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
