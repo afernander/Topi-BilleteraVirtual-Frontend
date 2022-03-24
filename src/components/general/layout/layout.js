@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -164,6 +163,7 @@ export default function Aside(props) {
             <SearchIcon sx = {{ mt: 3, mr:2  }} />
             <TextField
               label="Buscar"
+              value={filter}
               onChange={handleSearchChange}
               variant="standard"
             />
@@ -252,7 +252,18 @@ export default function Aside(props) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader sx={styles} />
-        {props.children}
+        {
+          // promotions.map((promotion) => (
+          //   <div key={promotion.id} >
+          //     {promotion.title}
+          //     {promotion.description}
+          //     <img src={promotion.image} alt="" />
+
+          //   </div>
+          // ))
+          props.children
+
+        }
       </Main>
     </Box>
   );
