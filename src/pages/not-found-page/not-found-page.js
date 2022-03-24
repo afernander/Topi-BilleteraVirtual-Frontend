@@ -7,7 +7,7 @@ import { MainButton } from "../../components/general/button/main-button";
 
 function NotFoundPage() {
   const Image404 = require("../../../src/images/404.png");
-  
+
   const tuyaImage = require("../../images/tuya.png");
   return (
     <div className={Styles.homeGrid}>
@@ -17,7 +17,7 @@ function NotFoundPage() {
         <Text className={Styles.texto__text1}>¡Lo sentimos!</Text>
         <Text className={Styles.texto__text2}>No hemos podido encontrar la pagina que buscabas</Text>
         </div>
-        <MainButton className={Styles.texto__boton}> Regresa al inicio </MainButton>
+        <MainButton href="/" className={Styles.texto__boton}> Regresa al inicio </MainButton>
       </div>
       <div className={Styles.homeGrid__404}>
       <Image src={Image404}/>
