@@ -9,6 +9,7 @@ function Text(props) {
     textAlign: props.textAlign,
     margin: props.margin,
     padding: props.padding,
+    marginBottom: props.marginBottom
   };
 
   return <Typography sx={styles} {...props} > {props.children} </Typography>;
