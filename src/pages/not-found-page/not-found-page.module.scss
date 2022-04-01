@@ -3,73 +3,31 @@ body {
 }
 
 .homeGrid {
-  display: grid;
-  grid-template-columns: 50% 50%;
+  display: flex;
+  flex-flow: row nowrap;
   padding: 1rem;
   padding: 0 !important;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6%;
+  width: 100%;
+  gap: 6rem;
 
-  //Responsive design
-  @media (max-width: 768px) {
-    grid-template-columns: 100%;
+  &__content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+
+    .imgWrapper {
+      position: absolute;
+      top: 7%;
+      left: 10%;
+      width: 10%;
+    }
   }
 
-  &__imgWrapper {
-    margin-top: 2rem;
-    margin-left: 8rem;
-    height: 20%;
-    width: 20%;
-
-    .texto {
-    
-        
-        margin-top: 6rem;
-        
-    
-    
-        &__text1 {
-            
-           width: 250%; 
-          color: #000000;
-          font-weight: 900;
-          font-size: 2rem;
-          text-align: center;
-    
-        }
-
-        &__text2 {
-            
-            width: 250%;
-            margin-top: 2rem;
-          color: #000000;
-          font-weight: 700;
-          font-size: 1rem;
-    
-        }
-
-        &__boton {
-   
-            margin-left: 4rem;
-            width: 160%;
-            margin-top: 2rem;
-            
-        
-          }
-      }
-
+  &__img404 {
+    width: 40%;
   }
-
-
-  &__404 {
-   
-    margin-left: 8rem;
-    width: 65%;
-    margin-top: 10rem;
-
-
-  }
-
-  
-
 }
-
-
