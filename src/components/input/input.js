@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
-export default function Input({ label, text, type, id }) {
+export default function Input({ label, text, type, id, ...rest }) {
   return (
     <Box
       component="div"
@@ -20,6 +20,7 @@ export default function Input({ label, text, type, id }) {
         sx={{ width: "100%" }}
         size="small"
         type={type}
+        {...rest}
       />
     </Box>
   );

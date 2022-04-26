@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./login.module.scss";
 import { Image } from "mui-image";
 import { Text } from "../../../components/text/text";
 import Input from "../../../components/input/input";
 import { MainButton } from "../../../components/general/button/main-button";
 import { Form } from "../../../components/login/form";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 
 function Login() {
   const homeImage = require("../../../images/home-image.png");
   const logo = require("../../../images/home-pig.png");
+
+  const [body, setBody] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = body;
+
+  const handleChange = (e) => {
+    setBody({
+      ...body,
+      [e.target.name]: e.target.value,
+    })
+  };
+
+  const onSubmit = ( e ) => {
+    console.log(body);
+    e.preventDefault();
+  };
+
   return (
     <div className={Styles.homeGrid}>
       <div className={Styles.homeGrid__imgWrapper}>
@@ -22,13 +42,27 @@ function Login() {
           </div>
           <Text className={Styles.logo__text}>Bienvenido a T-U</Text>
         </div>
-        <Form method="post" action="">
-          <Input id="email" label="Correo" type="email" />
+        <Form onSubmit={ onSubmit } >
+          <Input
+            name="email"
+            label="Correo"
+            type="email"
+            value={email}
+            onChange={handleChange}
+          />
 
-          <Input id="pwd" label="Contraseña" type="password" />
-          <MainButton href="home" > Iniciar Sesión </MainButton>
-          <div className={Styles.notAccount} >
-            <Text color="#536471" fontSize = "15px" >¿No tienes una cuenta?</Text>
+          <Input
+            name="password"
+            label="Contraseña"
+            type="password"
+            value={password}
+            onChange={handleChange}
+          />
+          <MainButton> Iniciar Sesión </MainButton>
+          <div className={Styles.notAccount}>
+            <Text color="#536471" fontSize="15px">
+              ¿No tienes una cuenta?
+            </Text>
             <Link href="/registro" variant="body2">
               Registrate
             </Link>
@@ -37,6 +71,6 @@ function Login() {
       </div>
     </div>
   );
-};
+}
 
 export { Login };

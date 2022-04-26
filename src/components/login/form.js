@@ -5,7 +5,7 @@ import Styles from "./form.module.scss";
 
 function Form(props) {
   return (
-    <form className={Styles.form} action={props.type} method={props.method} >
+    <form  {...props} className={Styles.form}>
       {props.children}
     </form>
   );

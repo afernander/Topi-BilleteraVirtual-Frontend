@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styles from "./register.module.scss";
 import { Image } from "mui-image";
 import { Text } from "../../../components/text/text";
@@ -6,16 +6,34 @@ import BasicDatePicker from "../../../components/date/date";
 import Input from "../../../components/input/input";
 import { MainButton } from "../../../components/general/button/main-button";
 import { Form } from "../../../components/login/form";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
 
-function Register  ()  {
+function Register() {
   const homeImage = require("../../../images/home-image.png");
   const logo = require("../../../images/home-pig.png");
+
+  const [body, setBody] = useState({
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    birthDate: null,
+  });
+
+  const { name, lastName, email, password, confirmPassword, birthDate } = body;
+
+  const handleChange = (e) => {
+    setBody({
+      ...body,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div className={Styles.homeGrid}>
       <div className={Styles.homeGrid__imgWrapper}>
-        <Image src={homeImage}/>
+        <Image src={homeImage} />
       </div>
       <div className={Styles.homeGrid__formWrapper}>
         <div className={Styles.logo}>
@@ -25,28 +43,57 @@ function Register  ()  {
           <Text className={Styles.logo__text}>Bienvenido a T-U</Text>
         </div>
         <Form method="post" action="">
-          <BasicDatePicker id="date" />
-
-          <Input id="name" label="Nombre" />
-          <Input id="lastName" label="Apellido" />
-
+          <BasicDatePicker
+            name="birthDate"
+            value={birthDate}
+            onChange={(newValue) =>
+              setBody({
+                ...body,
+                birthDate: newValue,
+              })
+            }
+          />
           <Input
-            id="email"
+            name="name"
+            label="Nombre"
+            value={name}
+            onChange={handleChange}
+          />
+          <Input
+            name="lastName"
+            label="Apellido"
+            value={lastName}
+            onChange={handleChange}
+          />
+          <Input
+            name="email"
             label="Correo"
             text="Puedes usar letras, números y signos de puntuación"
             type="email"
+            value={email}
+            onChange={handleChange}
+          />
+          <Input
+            name="password"
+            label="Contraseña"
+            type="password"
+            value={password}
+            onChange={handleChange}
           />
 
-          <Input id="pwd" label="Contraseña" type="password" />
           <Input
-            id="pwdc"
+            name="confirmPassword"
             label="Confirmar Contraseña"
             type="password"
             text="Usa 8 o más caracteres"
+            value={confirmPassword}
+            onChange={handleChange}
           />
           <MainButton> Registrar </MainButton>
-          <div className={Styles.alreadyAccount} >
-            <Text color="#536471" fontSize = "15px" >¿Ya tienes una cuenta?</Text>
+          <div className={Styles.alreadyAccount}>
+            <Text color="#536471" fontSize="15px">
+              ¿Ya tienes una cuenta?
+            </Text>
             <Link href="/ingresar" variant="body2">
               Inicia Sesión
             </Link>
@@ -55,6 +102,6 @@ function Register  ()  {
       </div>
     </div>
   );
-};
+}
 
 export { Register };
