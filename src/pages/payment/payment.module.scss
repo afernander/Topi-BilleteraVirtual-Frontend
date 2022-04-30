@@ -1,0 +1,50 @@
+.title {
+  color: #ed1c29;
+  text-align: center;
+  margin: 1rem;
+}
+
+.payment {
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  &__method {
+    position: relative;
+    left: 3rem;
+
+    .images {
+      width: 2rem;
+    }
+
+    .list {
+      margin-top: 1rem;
+
+      &__image {
+        padding-right: 2rem;
+      }
+    }
+  }
+
+  &__price {
+    width: 50%;
+    margin: 4rem 0rem 0rem 10rem;
+
+
+    .prices {
+      display: inline-block;
+
+      &__name {
+
+        float: left;
+      }
+      &__number {
+        float: right;
+      }
+    }
+
+  }
+
+  .button {
+    width: 100%;
+  }
+}
