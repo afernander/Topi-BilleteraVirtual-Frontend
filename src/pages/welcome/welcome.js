@@ -1,6 +1,5 @@
 import React from "react";
 import Styles from "./welcome.module.scss";
-import Layout from "../../components/general/layout/layout";
 import { Image } from "mui-image";
 import { MainButton } from "../../components/general/button/main-button";
 import { Text } from "../../components/text/text";

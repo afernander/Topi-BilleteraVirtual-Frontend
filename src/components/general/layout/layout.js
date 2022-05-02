@@ -30,28 +30,6 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const drawerWidth = 240;
 
-//json object with some promotions
-const promotions = [
-  {
-    id: 1,
-    title: "Promotion 1",
-    description: "Description 1",
-    image: "https://source.unsplash.com/random",
-  },
-  {
-    id: 2,
-    title: "Promotion 2",
-    description: "Description 2",
-    image: "https://source.unsplash.com/random",
-  },
-  {
-    id: 3,
-    title: "Promotion 3",
-    description: "Description 3",
-    image: "https://source.unsplash.com/random",
-  },
-];
-
 //size top bar
 const styles = {
   height: "10rem",
@@ -253,16 +231,7 @@ export default function Aside(props) {
       <Main open={open}>
         <DrawerHeader sx={styles} />
         {
-          // promotions.map((promotion) => (
-          //   <div key={promotion.id} >
-          //     {promotion.title}
-          //     {promotion.description}
-          //     <img src={promotion.image} alt="" />
-
-          //   </div>
-          // ))
           props.children
-
         }
       </Main>
     </Box>
