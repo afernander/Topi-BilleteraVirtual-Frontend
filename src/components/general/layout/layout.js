@@ -24,6 +24,7 @@ import Avatar from "@mui/material/Avatar";
 import { Text } from "../../text/text";
 import Image from "./../../../images/girl.png";
 import LayoutBg from "./../../../images/bg-layout.png";
+import { Button } from "@mui/material";
 
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
@@ -138,7 +139,7 @@ export default function Aside(props) {
         </span>
         <Toolbar sx={styles}>
           <div>
-            <SearchIcon sx = {{ mt: 3, mr:2  }} />
+            <SearchIcon sx={{ mt: 3, mr: 2 }} />
             <TextField
               label="Buscar"
               value={filter}
@@ -192,47 +193,67 @@ export default function Aside(props) {
         </DrawerHeader>
         <Divider sx={dividerStyles} />
         <List>
-          {["Inicio", "Clave Dinámica"].map((text) => (
-            <ListItem button key={text}>
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/home">
+            <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
-                {text === "Inicio" ? <HomeIcon /> : <KeyIcon />}
+                <HomeIcon />
               </ListItemIcon>
-              <ListItemText sx={textColor} primary={text} />
+              <ListItemText primary="Inicio" />
             </ListItem>
-          ))}
+          </Button>
+          <Button sx={{ textTransform: "none" }} href="#">
+            <ListItem sx={textColor}>
+              <ListItemIcon sx={textColor}>
+                <KeyIcon />
+              </ListItemIcon>
+              <ListItemText primary="Clave Dinámica" />
+            </ListItem>
+          </Button>
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          {["Destinar Gastos", "Historico de Transacciones"].map((text) => (
-            <ListItem button key={text} sx={textColor}>
+          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+            <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
-                {text === "Destinar Gastos" ? <PaidIcon /> : <HistoryIcon />}
+                <PaidIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Destinar Gastos" />
             </ListItem>
-          ))}
+          </Button>
+
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/payment">
+            <ListItem sx={textColor}>
+              <ListItemIcon sx={textColor}>
+                <HistoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="Historico de Transacciones" />
+            </ListItem>
+          </Button>
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          {["Recargas", "Info"].map((text) => (
-            <ListItem sx={textColor} button key={text}>
+          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+            <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
-                {text === "Info" ? (
-                  <InfoIcon />
-                ) : (
-                  <VerticalAlignTopRoundedIcon />
-                )}
+                <VerticalAlignTopRoundedIcon />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Recargas" />
             </ListItem>
-          ))}
+          </Button>
+
+          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+            <ListItem sx={textColor}>
+              <ListItemIcon sx={textColor}>
+                <InfoIcon />
+              </ListItemIcon>
+              <ListItemText primary="Info" />
+            </ListItem>
+          </Button>
         </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader sx={styles} />
-        {
-          props.children
-        }
+        {props.children}
       </Main>
     </Box>
   );

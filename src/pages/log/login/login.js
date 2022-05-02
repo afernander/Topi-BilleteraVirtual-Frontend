@@ -58,7 +58,7 @@ function Login() {
             value={password}
             onChange={handleChange}
           />
-          <MainButton> Iniciar Sesión </MainButton>
+          <MainButton href = "/home" > Iniciar Sesión </MainButton>
           <div className={Styles.notAccount}>
             <Text color="#536471" fontSize="15px">
               ¿No tienes una cuenta?
