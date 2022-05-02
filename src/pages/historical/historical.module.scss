@@ -1,0 +1,33 @@
+.title {
+  color: #ed1c29;
+  text-align: center;
+  margin: 2rem;
+}
+
+.table {
+
+  text-align: center;
+
+  th {
+    color: rgb(197, 197, 197);
+  }
+
+  tr {
+    height: 4rem;
+
+    position: relative;
+  }
+
+  tr td:first-child {
+    position: absolute;
+    background-color: #0b6586;
+    color: #fff;
+    width: 5rem;
+    border-radius: 0.5rem;
+    top: 25%;
+  }
+
+  tr td:nth-child(3) {
+    font-weight: bold;
+  }
+}
