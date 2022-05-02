@@ -7,6 +7,8 @@ import { Home } from '../pages/log/home/home';
 
 import { NotFoundPage } from '../pages/not-found-page/not-found-page';
 import { Welcome } from '../pages/welcome/welcome';
+import { Historical } from '../pages/historical/historical';
+import { Payment } from '../pages/payment/payment';
 
 
 
@@ -21,6 +23,8 @@ function TuRoutes() {
 
         <Route path="/home" element={<Home />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/historical" element={<Historical />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </BrowserRouter>
   )
