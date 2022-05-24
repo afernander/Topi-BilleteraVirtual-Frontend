@@ -6,10 +6,12 @@ import Input from "../../../components/input/input";
 import { MainButton } from "../../../components/general/button/main-button";
 import { Form } from "../../../components/login/form";
 import Link from "@mui/material/Link";
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
   const homeImage = require("../../../images/home-image.png");
   const logo = require("../../../images/home-pig.png");
+  const navigate = useNavigate();
 
   const [body, setBody] = useState({
     email: "",
@@ -29,6 +31,32 @@ function Login() {
     console.log(body);
     e.preventDefault();
   };
+
+  const handleSubmit = async () => {
+
+
+   const data = {
+      "email": body.email,
+      "password": body.password,
+    }
+
+   await fetch("http://localhost:3000/users/signin", {
+     "method": "POST",
+     "headers": {
+       "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
+       "Content-Type": "application/json"
+     },
+     "body": JSON.stringify(data)
+   })
+   .then(response => {
+     console.log(response);
+     navigate('/home');
+   })
+   .catch(err => {
+     console.error(err);
+   });
+   
+}
 
   return (
     <div className={Styles.homeGrid}>
@@ -58,7 +86,7 @@ function Login() {
             value={password}
             onChange={handleChange}
           />
-          <MainButton href = "/home" > Iniciar Sesión </MainButton>
+          <MainButton onClick={handleSubmit}> Iniciar Sesión </MainButton>
           <div className={Styles.notAccount}>
             <Text color="#536471" fontSize="15px">
               ¿No tienes una cuenta?
