@@ -10,7 +10,6 @@ import Link from "@mui/material/Link";
 import {useNavigate} from 'react-router-dom';
 
 
-
 function Register() {
   const homeImage = require("../../../images/home-image.png");
   const logo = require("../../../images/home-pig.png");

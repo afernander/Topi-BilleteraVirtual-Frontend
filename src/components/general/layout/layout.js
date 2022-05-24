@@ -201,7 +201,7 @@ export default function Aside(props) {
               <ListItemText primary="Inicio" />
             </ListItem>
           </Button>
-          <Button sx={{ textTransform: "none" }} href="#">
+          <Button sx={{ textTransform: "none" }} href="/code">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <KeyIcon />
@@ -212,7 +212,7 @@ export default function Aside(props) {
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/payment">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <PaidIcon />
@@ -221,7 +221,7 @@ export default function Aside(props) {
             </ListItem>
           </Button>
 
-          <Button sx={{ textTransform: "none", margin: "0" }} href="/payment">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/historical">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <HistoryIcon />
