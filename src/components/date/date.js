@@ -11,6 +11,7 @@ export default function BasicDatePicker( props ) {
   return (
     <LocalizationProvider  dateAdapter={AdapterDateFns}>
       <DatePicker
+        dateFormat="yyyy/MM/dd"
         name={name}
         label="Fecha de nacimiento"
         value={value}
