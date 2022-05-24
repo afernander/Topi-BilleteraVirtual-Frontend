@@ -23,10 +23,21 @@ function Register() {
 
   const { name, lastName, email, password, confirmPassword, birthDate } = body;
 
-  const handleChange = (e) => {
+  const submit = (submit2) => {
+    submit2.preventDefault();
+    fetch("http://localhost:5000/users/signup", {
+      mode: "no-cors",
+      method: "POST",
+      body: JSON.stringify({ body }),
+    })
+      .then((res) => res.json())
+      .then((json) => setBody(json.body));
+  };
+
+  const handleChange = (submit2) => {
     setBody({
       ...body,
-      [e.target.name]: e.target.value,
+      [submit2.target.name]: submit2.target.value,
     });
   };
 
@@ -42,7 +53,7 @@ function Register() {
           </div>
           <Text className={Styles.logo__text}>Bienvenido a T-U</Text>
         </div>
-        <Form method="post" action="">
+        <Form method="post" action="" onSubmit={submit}>
           <BasicDatePicker
             name="birthDate"
             value={birthDate}
@@ -89,7 +100,8 @@ function Register() {
             value={confirmPassword}
             onChange={handleChange}
           />
-          <MainButton> Registrar </MainButton>
+
+          <MainButton type="submit"> Registrar </MainButton>
           <div className={Styles.alreadyAccount}>
             <Text color="#536471" fontSize="15px">
               ¿Ya tienes una cuenta?
