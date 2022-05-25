@@ -25,6 +25,35 @@ function DestinarGastos() {
     e.preventDefault();
   };
 
+  const handleSubmit = async () => {
+
+    
+
+   const expense = {
+    "amount": 30,
+    "category": "que",
+    "users": 1
+ }
+
+   await fetch("http://localhost:3000/expenses", {
+     "method": "POST",
+     "headers": {
+       "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
+       "Content-Type": "application/json"
+     },
+     "body": JSON.stringify(expense)
+   })
+   .then(response => {
+     console.log(response);
+   })
+   .catch(err => {
+     console.error(err);
+   });
+   
+}
+
+  
+
   return (
     <Layout>
       <div className={Styles.wrapForm}>
@@ -47,7 +76,7 @@ function DestinarGastos() {
             value={percent}
             onChange={handleChange}
           />
-        <MainButton href="/home"> Destinar </MainButton>
+        <MainButton onClick={handleSubmit}> Destinar </MainButton>
         </Form>
       </div>
     </Layout>

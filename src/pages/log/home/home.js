@@ -4,9 +4,6 @@ import ActionAreaCard from "../../../components/card/card";
 import Styles from "./home.module.scss";
 import { Button, imageListClasses } from "@mui/material";
 import {useState} from 'react';
-import { responsiveProperty } from "@mui/material/styles/cssUtils";
-import { Imgurl} from '../../../components/img/Imgurl';
-import { Gif, ImageNotSupported } from "@mui/icons-material";
 
 function Home() {
   const gym = require("./../../../images/gym.png");

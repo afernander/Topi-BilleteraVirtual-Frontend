@@ -1,8 +1,6 @@
 import React from "react";
-import { Image } from "mui-image";
 import Styles from "./historical.module.scss";
 import { Text } from "../../components/text/text";
-import { MainButton } from "../../components/general/button/main-button";
 import Layout from "../../components/general/layout/layout";
 import { Table } from "@mui/material";
 
@@ -20,11 +18,11 @@ function Historical() {
           <th>Precio</th>
         </tr>
         <br></br>
-        <tr>
+        <tr >
           <td>0523</td>
           <td>Parqueadero</td>
           <td>50-Juanita Perez</td>
-          <td>${22562}</td>
+          <td>${5000}</td>
         </tr>
 
         <tr>
