@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function ActionAreaCard({ image, title, description , children }) {
+export default function ActionAreaCard({ image, title, description , price, children }) {
   return (
     <Card sx={{ width: 245 }}>
       <CardActionArea>
@@ -21,6 +21,9 @@ export default function ActionAreaCard({ image, title, description , children })
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {description}
+          </Typography>
+          <Typography variant="h6" color="text.secondary" >
+            $ = {price}
           </Typography>
         </CardContent>
       </CardActionArea>
