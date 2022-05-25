@@ -26,8 +26,6 @@ import Image from "./../../../images/girl.png";
 import LayoutBg from "./../../../images/bg-layout.png";
 import { Button } from "@mui/material";
 
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
 
 const drawerWidth = 240;
 
@@ -96,8 +94,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Aside(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [filter, setFilter] = React.useState("");
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -106,10 +102,6 @@ export default function Aside(props) {
     setOpen(false);
   };
 
-  const handleSearchChange = (e) => {
-    setFilter(e.target.value);
-    console.log(filter);
-  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -138,15 +130,7 @@ export default function Aside(props) {
           </IconButton>
         </span>
         <Toolbar sx={styles}>
-          <div>
-            <SearchIcon sx={{ mt: 3, mr: 2 }} />
-            <TextField
-              label="Buscar"
-              value={filter}
-              onChange={handleSearchChange}
-              variant="standard"
-            />
-          </div>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -212,7 +196,7 @@ export default function Aside(props) {
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/destinarGastos ">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <PaidIcon />
@@ -232,7 +216,7 @@ export default function Aside(props) {
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/recargas">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <VerticalAlignTopRoundedIcon />

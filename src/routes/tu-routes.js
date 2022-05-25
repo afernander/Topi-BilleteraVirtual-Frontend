@@ -9,6 +9,8 @@ import { NotFoundPage } from '../pages/not-found-page/not-found-page';
 import { Welcome } from '../pages/welcome/welcome';
 import { Historical } from '../pages/historical/historical';
 import { Payment } from '../pages/payment/payment';
+import { Charges } from '../pages/charges/charges';
+import { DestinarGastos } from '../pages/destinar-gastos/destinar-gastos';
 
 
 
@@ -25,6 +27,8 @@ function TuRoutes() {
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/historical" element={<Historical />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/recargas" element={<Charges />} />
+        <Route path="/destinarGastos" element={<DestinarGastos />} />
       </Routes>
     </BrowserRouter>
   )
