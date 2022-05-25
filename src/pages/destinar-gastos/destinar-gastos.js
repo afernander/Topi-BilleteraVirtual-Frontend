@@ -30,9 +30,9 @@ function DestinarGastos() {
 
 
    const expense = {
-    "amount": 30,
-    "category": "que",
-    "users": 1
+    amount: parseInt(body.percent),
+    category: body.type,
+    users: JSON.parse(localStorage.getItem('user')).id
  }
 
    await fetch("http://localhost:3000/expenses", {
@@ -72,7 +72,7 @@ function DestinarGastos() {
           <Input
             name="percent"
             label="Porcentaje"
-            type="text"
+            type="number"
             value={percent}
             onChange={handleChange}
           />
