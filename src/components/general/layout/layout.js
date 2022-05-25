@@ -104,11 +104,13 @@ export default function Aside(props) {
 
   const handleName = async () => {
 
-    fetch("http://localhost:3000/users/whoiam", {
+    const id = JSON.parse(localStorage.getItem('user')).id;
+    fetch(`http://localhost:3000/users/${id}`, {
       "method": "GET",
-      "headers": {
-        "cookie": "session=eyJ1c2VySWQiOjR9; session.sig=zkXT5HoUJr-HOXcWpnfVKBoJMZ4"
-      }
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     })
     .then(response => {
       console.log(response);

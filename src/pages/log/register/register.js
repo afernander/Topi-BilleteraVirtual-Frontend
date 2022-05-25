@@ -32,7 +32,7 @@ function Register() {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = async () => {
 
      var month ="";
@@ -55,12 +55,12 @@ function Register() {
         "name": body.name+" "+body.lastName,
         "date": body.birthDate.getFullYear()+"-"+month+"-"+day
   }
- 
+
     await fetch("http://localhost:3000/users/signup", {
       "method": "POST",
-      "headers": {
-        "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
-        "Content-Type": "application/json"
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       "body": JSON.stringify(user)
     })

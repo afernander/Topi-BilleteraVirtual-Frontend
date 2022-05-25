@@ -21,12 +21,12 @@ function Home() {
       price: 3000,
       image: gym,
     }
-    
+
   ];
 
   const [data, setData] = useState(null);
   const [img, setImg] = useState(null);
-  
+
   useEffect(() =>{
      fetch('http://localhost:3000/products')
     .then( res => {
@@ -61,7 +61,7 @@ function Home() {
   //  },[])
 
   // }
- 
+
   // var productos= []
   // if(data){
   //   data.map((product)=>{
@@ -69,10 +69,10 @@ function Home() {
   //   })
 
   // }
-  
+
   // var i = "";
-  
- 
+
+
   //  const getGifs = async (titles) => {
   //     titles.map(async ( title ) => {
   //      await fetch('https://api.giphy.com/v1/gifs/search?api_key=5MhLgu0LZwIPeMY9UT1fUFyCmpEi5YB3&limit=1&q='+title)
@@ -83,16 +83,16 @@ function Home() {
   //       throw res;
   //     })
   //     .then( data => {
-      
+
   //       i =(data.data[0].images?.downsized_medium.url);
   //       imgs.push(i);
-       
+
   //     })
   //       //return data.data[0].images?.downsized_medium.url;
-  //     } )   
-        
+  //     } )
+
   // }
-  
+
   // getGifs(productos);
   // Gifts("gym");
 
@@ -100,7 +100,7 @@ function Home() {
 
   if(data){
     pro = data.map((product, id) => {
-    
+
       return{
         id: product.id,
         name: product.name,
@@ -108,13 +108,13 @@ function Home() {
         price: product.price,
         image: links[id]
       }
-    
+
     })
-    
+
   }
 
 
- 
+
 
   return (
     <Layout>

@@ -27,7 +27,7 @@ function DestinarGastos() {
 
   const handleSubmit = async () => {
 
-    
+
 
    const expense = {
     "amount": 30,
@@ -37,10 +37,10 @@ function DestinarGastos() {
 
    await fetch("http://localhost:3000/expenses", {
      "method": "POST",
-     "headers": {
-       "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
-       "Content-Type": "application/json"
-     },
+     headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
      "body": JSON.stringify(expense)
    })
    .then(response => {
@@ -49,10 +49,10 @@ function DestinarGastos() {
    .catch(err => {
      console.error(err);
    });
-   
+
 }
 
-  
+
 
   return (
     <Layout>
