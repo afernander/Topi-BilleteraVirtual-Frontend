@@ -35,12 +35,13 @@ function Welcome() {
           <div className={Styles.homeWrapper__textContainer}>
             <Text fontSize="18px" color="black">
               <span color="red"> T-U </span> Una cuenta digital enfocada en
-              estudiantes universitarios
+              estudiantes universitarios, 4000 de los 15000 estudiantes de EAFIT la estan usando en este momento. Que esperas?
             </Text>
             <br />
             <Text fontSize="18px" color="black">
               ¡Ahora puedes gestionar tu dinero de forma segura y sencilla desde
               un solo lugar y al alcance de tu mano!
+              Has compras, transacciones y pagos desde un mismo lugar y ahorra tiempo.
             </Text>
           </div>
           <div className = {Styles.homeWrapper__images} >

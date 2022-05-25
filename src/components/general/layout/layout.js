@@ -26,7 +26,6 @@ import Image from "./../../../images/girl.png";
 import LayoutBg from "./../../../images/bg-layout.png";
 import { Button } from "@mui/material";
 
-
 const drawerWidth = 240;
 
 //size top bar
@@ -103,6 +102,24 @@ export default function Aside(props) {
   };
 
 
+  const handleName = async () => {
+
+    fetch("http://localhost:3000/users/whoiam", {
+      "method": "GET",
+      "headers": {
+        "cookie": "session=eyJ1c2VySWQiOjR9; session.sig=zkXT5HoUJr-HOXcWpnfVKBoJMZ4"
+      }
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  }
+
+
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -164,7 +181,7 @@ export default function Aside(props) {
               src={Image}
               sx={{ width: 160, height: 160, marginTop: "1rem" }}
             />
-            <Text color="white"> JUANITA PEREZ</Text>
+            <Text color="white">juana</Text>
             <Text color="white"> Universidad EAFIT</Text>
           </Box>
           <IconButton onClick={handleDrawerClose}>
@@ -185,7 +202,7 @@ export default function Aside(props) {
               <ListItemText primary="Inicio" />
             </ListItem>
           </Button>
-          <Button sx={{ textTransform: "none" }} href="#">
+          <Button sx={{ textTransform: "none" }} href="/code">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <KeyIcon />
@@ -205,7 +222,7 @@ export default function Aside(props) {
             </ListItem>
           </Button>
 
-          <Button sx={{ textTransform: "none", margin: "0" }} href="/payment">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/historical">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <HistoryIcon />

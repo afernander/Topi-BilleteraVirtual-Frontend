@@ -11,6 +11,7 @@ import { Historical } from '../pages/historical/historical';
 import { Payment } from '../pages/payment/payment';
 import { Charges } from '../pages/charges/charges';
 import { DestinarGastos } from '../pages/destinar-gastos/destinar-gastos';
+import { Code } from '../pages/code/code';
 
 
 
@@ -29,6 +30,7 @@ function TuRoutes() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/recargas" element={<Charges />} />
         <Route path="/destinarGastos" element={<DestinarGastos />} />
+        <Route path="/code" element={<Code />} />
       </Routes>
     </BrowserRouter>
   )
