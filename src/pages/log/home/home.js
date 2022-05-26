@@ -7,9 +7,9 @@ import { useState } from "react";
 import { Text } from "./../../../components/text/text";
 
 function Home() {
-  const gym = require("./../../../images/gym.png");
-  const dispense = require("./../../../images/dispense.png");
-  const parking = require("./../../../images/parking.png");
+  const gym = require("./../../../images/gym.jpeg");
+  const dispense = require("./../../../images/dispense.jpeg");
+  const parking = require("./../../../images/parking.jpeg");
   const links = [gym, dispense, parking];
   const styles = {
     textAlign: "start",
