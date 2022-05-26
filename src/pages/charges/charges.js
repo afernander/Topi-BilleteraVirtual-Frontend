@@ -36,6 +36,7 @@ function Charges() {
   }
 
   const handleSubmit = async () => {
+    localStorage.setItem("user", JSON.stringify(data));
     fetch("http://localhost:3000/users/"+parseInt(body.id), {
       "method": "PUT",
       "headers": {

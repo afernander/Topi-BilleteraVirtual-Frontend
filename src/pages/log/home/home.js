@@ -56,6 +56,10 @@ function Home() {
     });
   }
 
+  const reg=/\d{1,3}(?=(\d{3})+$)/g;
+  const saldo0 = JSON.parse(localStorage.getItem('user')).balance;
+    const saldo = ((saldo0 + '').replace(reg, '$&.')).replace(",", ".");
+
   return (
     <Layout>
       <div
@@ -73,7 +77,7 @@ function Home() {
         }}
       >
         <Text variant="h5" color="black">
-          Este es tu saldo actual: {JSON.parse(localStorage.getItem('user')).balance}
+          Este es tu saldo actual: {saldo}
         </Text>
       </div>
       <div className={Styles.cardHome}>

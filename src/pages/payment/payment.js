@@ -19,6 +19,7 @@ function Payment() {
   const credito = require("./../../images/gana.png");
   const pago= 60000;
 
+
   var data = {
     "email": JSON.parse(localStorage.getItem('user')).email,
         "password": JSON.parse(localStorage.getItem('user')).password,
@@ -27,6 +28,8 @@ function Payment() {
         "balance": (JSON.parse(localStorage.getItem('user')).balance - pago)
   }
   const handleSubmit = async () => {
+
+    localStorage.setItem("user", JSON.stringify(data));
     fetch("http://localhost:3000/users/"+(JSON.parse(localStorage.getItem('user')).id), {
       "method": "PUT",
       "headers": {
