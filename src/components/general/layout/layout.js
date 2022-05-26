@@ -25,6 +25,7 @@ import { Text } from "../../text/text";
 import Image from "./../../../images/girl.png";
 import LayoutBg from "./../../../images/bg-layout.png";
 import { Button } from "@mui/material";
+import { MainButton } from "./../../general/button/main-button";
 
 const drawerWidth = 240;
 
@@ -32,9 +33,9 @@ const drawerWidth = 240;
 const styles = {
   height: "10rem",
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "space-between",
   alignItems: "center",
-  width: "80%",
+  width: "95%",
 };
 
 const dividerStyles = {
@@ -44,6 +45,9 @@ const dividerStyles = {
 const textColor = {
   color: "white",
 };
+
+//saldo
+const saldo = 10000;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -101,7 +105,6 @@ export default function Aside(props) {
     setOpen(false);
   };
 
-
   const handleName = async () => {
 
     const id = JSON.parse(localStorage.getItem('user')).id;
@@ -112,15 +115,13 @@ export default function Aside(props) {
         'Content-Type': 'application/json',
       },
     })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(err => {
-      console.error(err);
-    });
-  }
-
-
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -149,7 +150,24 @@ export default function Aside(props) {
           </IconButton>
         </span>
         <Toolbar sx={styles}>
-
+            <div
+              style={{
+                backgroundColor: "#f5f5f5",
+                borderRadius: "5px",
+                width: "40%",
+                height: "40%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: "0px 0px 5px #red",
+                margin: "0 auto",
+              }}
+            >
+              <Text variant="h5" color="black">
+                Este es tu saldo actual: {saldo}
+              </Text>
+            </div>
+          <MainButton width="11%" href="/ingresar" >Cerrar sesión</MainButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -215,7 +233,10 @@ export default function Aside(props) {
         </List>
         <Divider sx={dividerStyles} />
         <List>
-          <Button sx={{ textTransform: "none", margin: "0" }} href="/destinarGastos ">
+          <Button
+            sx={{ textTransform: "none", margin: "0" }}
+            href="/destinarGastos "
+          >
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <PaidIcon />
@@ -224,7 +245,10 @@ export default function Aside(props) {
             </ListItem>
           </Button>
 
-          <Button sx={{ textTransform: "none", margin: "0" }} href="/historical">
+          <Button
+            sx={{ textTransform: "none", margin: "0" }}
+            href="/historical"
+          >
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <HistoryIcon />
@@ -244,7 +268,7 @@ export default function Aside(props) {
             </ListItem>
           </Button>
 
-          <Button sx={{ textTransform: "none", margin: "0" }} href="#">
+          <Button sx={{ textTransform: "none", margin: "0" }} href="/info">
             <ListItem sx={textColor}>
               <ListItemIcon sx={textColor}>
                 <InfoIcon />

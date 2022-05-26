@@ -9,8 +9,12 @@ body {
   padding: 0 !important;
 
   //Responsive design
-  @media (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "textContainer"
+      "images";
   }
 
   &__imgWrapper {
@@ -59,3 +63,4 @@ body {
   }
 
 }
+

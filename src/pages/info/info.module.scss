@@ -1,0 +1,29 @@
+.contentWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  .homeWrapper {
+
+      display: grid;
+      grid-template-columns: 50% 50%;
+      margin-top: 4rem;
+
+      &__textContainer {
+        justify-self: center ;
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: 90%;
+        border: 1px solid #e6e6e6;
+        padding: 5%;
+        padding-bottom: 1%;
+        padding-left: 8%;
+        border-radius: 30px;
+        box-shadow: 5px 10px 10px 5px rgba(0,0,0,0.2);
+      }
+    }
+}
+

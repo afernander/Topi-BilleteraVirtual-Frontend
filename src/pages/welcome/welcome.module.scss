@@ -65,3 +65,54 @@
 
 }
 
+//responsive design for mobile devices
+@media screen and (max-width: 768px) {
+  .homeWrapper {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "textContainer"
+      "images";
+  }
+
+  .homeWrapper__textContainer {
+    grid-area: textContainer;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 15%;
+    padding-right: 5%;
+    border: none;
+    box-shadow: none;
+  }
+
+  .homeWrapper__images{
+    grid-area: images;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: none;
+    box-shadow: none;
+  }
+
+  .homeWrapper__images .cardsWrapper{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: none;
+    box-shadow: none;
+  }
+
+}
+
+//end of welcome module scss
