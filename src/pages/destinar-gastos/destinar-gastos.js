@@ -27,7 +27,7 @@ function DestinarGastos() {
 
   const handleSubmit = async () => {
 
-    
+
 
    const expense = {
     "amount": 30,
@@ -49,10 +49,10 @@ function DestinarGastos() {
    .catch(err => {
      console.error(err);
    });
-   
+
 }
 
-  
+
 
   return (
     <Layout>
