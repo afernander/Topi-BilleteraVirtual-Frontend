@@ -9,6 +9,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Input from "../../components/input/input";
 
 function Payment() {
   const cupon = require("./../../images/paga.png");
@@ -16,6 +17,31 @@ function Payment() {
   const pse = require("./../../images/pse.png");
   const billetera = require("./../../images/billetera.png");
   const credito = require("./../../images/gana.png");
+  const pago= 60000;
+
+  var data = {
+    "email": JSON.parse(localStorage.getItem('user')).email,
+        "password": JSON.parse(localStorage.getItem('user')).password,
+        "name": JSON.parse(localStorage.getItem('user')).name,
+        "date": "2011-03-12",
+        "balance": (JSON.parse(localStorage.getItem('user')).balance - pago)
+  }
+  const handleSubmit = async () => {
+    fetch("http://localhost:3000/users/4", {
+      "method": "PUT",
+      "headers": {
+        "cookie": "session=eyJ1c2VySWQiOjR9; session.sig=zkXT5HoUJr-HOXcWpnfVKBoJMZ4",
+        "Content-Type": "application/json"
+      },
+      "body": JSON.stringify(data)
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  };
 
   return (
     <Layout>
@@ -74,7 +100,7 @@ function Payment() {
                 Monto Total
               </ListItemText>
               <ListItemText className={Styles.prices__number}>
-                {17856}
+                {pago+(pago/10)}
               </ListItemText>
             </ListItem>
             <ListItem className={Styles.prices}>
@@ -82,13 +108,13 @@ function Payment() {
                 Descuento
               </ListItemText>
               <ListItemText className={Styles.prices__number}>
-                {17856}
+                {pago/10}
               </ListItemText>
             </ListItem>
             <ListItem className={Styles.prices}>
               <ListItemText className={Styles.prices__name}>IVA</ListItemText>
               <ListItemText className={Styles.prices__number}>
-                {17856}
+                {parseInt(pago/19)}
               </ListItemText>
             </ListItem>
 
@@ -97,11 +123,18 @@ function Payment() {
                 Total a Pagar
               </ListItemText>
               <ListItemText className={Styles.prices__number}>
-                {17856}
+                {pago}
               </ListItemText>
-            </ListItem>
+              
 
-            <MainButton className={Styles.button}>Pagar</MainButton>
+            </ListItem>
+            <Input
+            name="percent"
+            label="Clave Dinamica"
+            type="text"
+            
+            />
+            <MainButton onClick={handleSubmit} className={Styles.button}>Pagar</MainButton>
           </List>
         </div>
       </div>

@@ -183,7 +183,7 @@ export default function Aside(props) {
               src={Image}
               sx={{ width: 160, height: 160, marginTop: "1rem" }}
             />
-            <Text color="white">juana</Text>
+            <Text color="white">{JSON.parse(localStorage.getItem('user')).name}</Text>
             <Text color="white"> Universidad EAFIT</Text>
           </Box>
           <IconButton onClick={handleDrawerClose}>
