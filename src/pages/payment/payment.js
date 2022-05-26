@@ -27,7 +27,7 @@ function Payment() {
         "balance": (JSON.parse(localStorage.getItem('user')).balance - pago)
   }
   const handleSubmit = async () => {
-    fetch("http://localhost:3000/users/4", {
+    fetch("http://localhost:3000/users/"+(JSON.parse(localStorage.getItem('user')).id), {
       "method": "PUT",
       "headers": {
         "cookie": "session=eyJ1c2VySWQiOjR9; session.sig=zkXT5HoUJr-HOXcWpnfVKBoJMZ4",
@@ -134,7 +134,7 @@ function Payment() {
             type="text"
             
             />
-            <MainButton onClick={handleSubmit} className={Styles.button}>Pagar</MainButton>
+            <MainButton href="/home" onClick={handleSubmit} className={Styles.button}>Pagar</MainButton>
           </List>
         </div>
       </div>

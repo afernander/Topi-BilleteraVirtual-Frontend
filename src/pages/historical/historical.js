@@ -9,31 +9,31 @@ const data = [
     id: "1",
     product: "Product 1",
     cuenta: "Parqueadero",
-    precio: "$1,000",
+    precio: "$5.000",
   },
   {
     id: "2",
     product: "Product 2",
-    cuenta: "Parqueadero",
-    precio: "$1,000",
+    cuenta: "Bebida",
+    precio: "$4.000",
   },
   {
     id: "3",
     product: "Product 3",
     cuenta: "Parqueadero",
-    precio: "$1,000",
+    precio: "$5.000",
   },
   {
     id: "4",
     product: "Product 4",
-    cuenta: "Parqueadero",
-    precio: "$1,000",
+    cuenta: "Transferencia",
+    precio: "$10.000",
   },
   {
     id: "5",
     product: "Transferencia",
     cuenta: "Ingreso",
-    precio: "$1,000",
+    precio: "$10.000",
   },
 ]
 
@@ -52,8 +52,8 @@ function Historical() {
             <th>Precio</th>
           </tr>
           <br></br>
-          {data.map((item) => (
-            <tr>
+          {data.map((item, i) => (
+            <tr key={i}>
               <td>{item.id}</td>
               <td>{item.product}</td>
               <td>{item.cuenta}</td>

@@ -25,6 +25,34 @@ function Charges() {
     e.preventDefault();
   };
 
+ 
+
+  var data = {
+    "email": JSON.parse(localStorage.getItem('user')).email,
+        "password": JSON.parse(localStorage.getItem('user')).password,
+        "name": JSON.parse(localStorage.getItem('user')).name,
+        "date": "2011-03-12",
+        "balance": (JSON.parse(localStorage.getItem('user')).balance +parseInt(body.amount))
+  }
+
+  const handleSubmit = async () => {
+    fetch("http://localhost:3000/users/"+parseInt(body.id), {
+      "method": "PUT",
+      "headers": {
+        "cookie": "session=eyJ1c2VySWQiOjR9; session.sig=zkXT5HoUJr-HOXcWpnfVKBoJMZ4",
+        "Content-Type": "application/json"
+      },
+      "body": JSON.stringify(data)
+    })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+  };
+
+
   return (
     <Layout >
       <div className={Styles.wrapForm} >
@@ -47,7 +75,7 @@ function Charges() {
             value={amount}
             onChange={handleChange}
           />
-          <MainButton href="/home"> Recargar </MainButton>
+          <MainButton href="/home" onClick={handleSubmit}> Recargar </MainButton>
         </Form>
       </div>
     </Layout>

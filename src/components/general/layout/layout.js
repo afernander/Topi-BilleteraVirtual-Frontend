@@ -47,7 +47,7 @@ const textColor = {
 };
 
 //saldo
-const saldo = 10000;
+const saldo = 0;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -164,10 +164,10 @@ export default function Aside(props) {
               }}
             >
               <Text variant="h5" color="black">
-                Este es tu saldo actual: {saldo}
+                Este es tu saldo actual: {JSON.parse(localStorage.getItem('user')).balance}
               </Text>
             </div>
-          <MainButton width="11%" href="/ingresar" >Cerrar sesión</MainButton>
+          <MainButton width="14%" href="/ingresar" >Cerrar sesión</MainButton>
         </Toolbar>
       </AppBar>
       <Drawer

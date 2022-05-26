@@ -54,7 +54,7 @@ function Register() {
         "password": body.password,
         "name": body.name+" "+body.lastName,
         "date": body.birthDate.getFullYear()+"-"+month+"-"+day,
-        "balance": 1000000,
+        "balance": 200000,
   }
 
     await fetch("http://localhost:3000/users/signup", {
