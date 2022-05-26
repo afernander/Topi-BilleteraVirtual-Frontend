@@ -6,7 +6,7 @@ import Input from "../../../components/input/input";
 import { MainButton } from "../../../components/general/button/main-button";
 import { Form } from "../../../components/login/form";
 import Link from "@mui/material/Link";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const homeImage = require("../../../images/home-image.png");
@@ -24,39 +24,38 @@ function Login() {
     setBody({
       ...body,
       [e.target.name]: e.target.value,
-    })
+    });
   };
 
-  const onSubmit = ( e ) => {
+  const onSubmit = (e) => {
     console.log(body);
     e.preventDefault();
   };
 
   const handleSubmit = async () => {
+    const data = {
+      email: body.email,
+      password: body.password,
+    };
 
-
-   const data = {
-      "email": body.email,
-      "password": body.password,
-    }
-
-   await fetch("http://localhost:3000/users/signin", {
-     "method": "POST",
-     "headers": {
-       "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
-       "Content-Type": "application/json"
-     },
-     "body": JSON.stringify(data)
-   })
-   .then(response => {
-     console.log(response);
-     navigate('/home');
-   })
-   .catch(err => {
-     console.error(err);
-   });
-   
-}
+    await fetch("http://localhost:3000/users/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        navigate("/home");
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <div className={Styles.homeGrid}>
@@ -70,7 +69,7 @@ function Login() {
           </div>
           <Text className={Styles.logo__text}>Bienvenido a T-U</Text>
         </div>
-        <Form onSubmit={ onSubmit } >
+        <Form onSubmit={onSubmit}>
           <Input
             name="email"
             label="Correo"

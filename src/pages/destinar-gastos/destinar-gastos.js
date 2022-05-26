@@ -27,20 +27,20 @@ function DestinarGastos() {
 
   const handleSubmit = async () => {
 
-    
+
 
    const expense = {
-    "amount": 30,
-    "category": "que",
-    "users": 1
+    amount: parseInt(body.percent),
+    category: body.type,
+    users: JSON.parse(localStorage.getItem('user')).id
  }
 
    await fetch("http://localhost:3000/expenses", {
      "method": "POST",
-     "headers": {
-       "cookie": "session=eyJ1c2VySWQiOjZ9; session.sig=5_-6GVQnEuucSwVORP8dx_SHLTc",
-       "Content-Type": "application/json"
-     },
+     headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
      "body": JSON.stringify(expense)
    })
    .then(response => {
@@ -49,10 +49,10 @@ function DestinarGastos() {
    .catch(err => {
      console.error(err);
    });
-   
+
 }
 
-  
+
 
   return (
     <Layout>
@@ -72,7 +72,7 @@ function DestinarGastos() {
           <Input
             name="percent"
             label="Porcentaje"
-            type="text"
+            type="number"
             value={percent}
             onChange={handleChange}
           />
