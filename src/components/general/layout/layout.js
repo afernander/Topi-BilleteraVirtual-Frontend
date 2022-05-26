@@ -33,7 +33,7 @@ const drawerWidth = 240;
 const styles = {
   height: "10rem",
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "end",
   alignItems: "center",
   width: "95%",
 };
@@ -45,9 +45,6 @@ const dividerStyles = {
 const textColor = {
   color: "white",
 };
-
-//saldo
-const saldo = 10000;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -150,23 +147,6 @@ export default function Aside(props) {
           </IconButton>
         </span>
         <Toolbar sx={styles}>
-            <div
-              style={{
-                backgroundColor: "#f5f5f5",
-                borderRadius: "5px",
-                width: "40%",
-                height: "40%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                boxShadow: "0px 0px 5px #red",
-                margin: "0 auto",
-              }}
-            >
-              <Text variant="h5" color="black">
-                Este es tu saldo actual: {saldo}
-              </Text>
-            </div>
           <MainButton width="11%" href="/ingresar" >Cerrar sesión</MainButton>
         </Toolbar>
       </AppBar>

@@ -6,6 +6,19 @@ import { MainButton } from "../../components/general/button/main-button";
 import { Text } from "../../components/text/text";
 import Styles from "./destinar-gastos.module.scss";
 
+const data = [
+  {
+    nombre:"Comida",
+    porcentaje: "12%",
+    monto: "20000"
+  },
+  {
+    nombre:"Transporte",
+    porcentaje: "12%",
+    monto: "20000"
+  },
+]
+
 function DestinarGastos() {
   const [body, setBody] = useState({
     type: "",
@@ -78,6 +91,29 @@ function DestinarGastos() {
           />
         <MainButton onClick={handleSubmit}> Destinar </MainButton>
         </Form>
+      </div>
+      <div className={Styles.wrapTable}>
+        <Text fontSize="22px" fontWeight="bold">
+          Destinación de Gastos
+        </Text>
+        <table className={Styles.table}>
+          <thead>
+            <tr>
+              <th>Tipo de Gasto</th>
+              <th>Monto</th>
+              <th>Porcentaje</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.nombre}</td>
+                <td>{item.monto}</td>
+                <td>{item.porcentaje}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </Layout>
   );
