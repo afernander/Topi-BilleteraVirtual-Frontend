@@ -29,9 +29,15 @@ import { MainButton } from "./../../general/button/main-button";
 
 const drawerWidth = 240;
 
+
+const reg=/\d{1,3}(?=(\d{3})+$)/g;
+  const saldo0 = JSON.parse(localStorage.getItem('user')).balance;
+
+    const saldo = ((saldo0 + '').replace(reg, '$&.')).replace(",", ".");
+
 //size top bar
 const styles = {
-  height: "10rem",
+  height: "2rem",
   display: "flex",
   justifyContent: "end",
   alignItems: "center",
@@ -141,13 +147,32 @@ export default function Aside(props) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ ml: 4, marginTop: "95%", ...(open && { display: "none" }) }}
+            sx={{ ml: 1, marginTop: "20%", ...(open && { display: "none" }) }}
           >
             <MenuIcon />
           </IconButton>
         </span>
         <Toolbar sx={styles}>
-          <MainButton width="11%" href="/ingresar" >Cerrar sesión</MainButton>
+        <div
+        style={{
+          backgroundColor: "#f5f5f5",
+          borderRadius: "5px",
+          width: "15%",
+          height: "50%",
+          position: "relative",
+          right: "70%",
+          textAlign: "center",
+          alignItems: "center",
+
+          border: "1px solid black",
+
+        }}
+      >
+        <Text variant="h5" color="black">
+        $  {saldo}
+        </Text>
+      </div>
+          <MainButton width="15%" href="/ingresar">Cerrar sesión</MainButton>
         </Toolbar>
       </AppBar>
       <Drawer

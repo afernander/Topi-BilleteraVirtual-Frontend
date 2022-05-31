@@ -9,16 +9,16 @@ import { useEffect } from "react";
 
 var data = [
   {
-    nombre:"Comida",
+    nombre: "Comida",
     porcentaje: "12%",
-    monto: "20000"
+    monto: "20000",
   },
   {
-    nombre:"Transporte",
+    nombre: "Transporte",
     porcentaje: "12%",
-    monto: "20000"
+    monto: "20000",
   },
-]
+];
 
 function DestinarGastos() {
   const [body, setBody] = useState({
@@ -39,7 +39,7 @@ function DestinarGastos() {
     e.preventDefault();
   };
 
-  const [datas, setDatas] = useState( null)
+  const [datas, setDatas] = useState(null);
 
   useEffect(() => {
     fetch("http://localhost:3000/expenses")
@@ -52,7 +52,7 @@ function DestinarGastos() {
       .then((data) => {
         console.log(datas);
         setDatas(data);
-        data= datas;
+        data = datas;
       })
       .catch((err) => {
         console.error("Error fetching data", datas);
@@ -68,85 +68,85 @@ function DestinarGastos() {
       };
     });
   }
- 
 
   console.log(datas);
   const handleSubmit = async () => {
+    const expense = {
+      amount: parseInt(body.percent),
+      category: body.type,
+      users: JSON.parse(localStorage.getItem("user")).id,
+    };
 
-
-
-   const expense = {
-    amount: parseInt(body.percent),
-    category: body.type,
-    users: JSON.parse(localStorage.getItem('user')).id
- }
-
-   await fetch("http://localhost:3000/expenses", {
-     "method": "POST",
-     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-     "body": JSON.stringify(expense)
-   })
-   .then(response => {
-     console.log(response);
-   })
-   .catch(err => {
-     console.error(err);
-   });
-
-}
-
-
+    await fetch("http://localhost:3000/expenses", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expense),
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <Layout>
-      <div className={Styles.wrapForm}>
-        <Form onSubmit={onSubmit}>
-          <Text fontSize="22px" fontWeight="bold">
-            Destinar Gastos
-          </Text>
-          <Input
-            name="type"
-            label="Tipo de Gasto"
-            type="text"
-            value={type}
-            onChange={handleChange}
-          />
+      <div className={Styles.destinar}>
+        <div className={Styles.wrapForm}>
+          <Form onSubmit={onSubmit}>
+            <Text fontSize="22px" fontWeight="bold">
+              Destinar Gastos
+            </Text>
+            <Input
+              name="type"
+              label="Tipo de Gasto"
+              type="text"
+              value={type}
+              onChange={handleChange}
+            />
 
-          <Input
-            name="percent"
-            label="Porcentaje"
-            type="number"
-            value={percent}
-            onChange={handleChange}
-          />
-        <MainButton onClick={handleSubmit}> Destinar </MainButton>
-        </Form>
-      </div>
-      <div className={Styles.wrapTable}>
-        <Text fontSize="22px" fontWeight="bold">
-          Destinación de Gastos
-        </Text>
-        <table className={Styles.table}>
-          <thead>
-            <tr>
-              <th>Tipo de Gasto</th>
-              <th>Monto</th>
-              <th>Porcentaje</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.category}</td>
-                <td>{parseInt(JSON.parse(localStorage.getItem('user')).balance / item.amount)}</td>
-                <td>{item.amount}</td>
+            <Input
+              name="percent"
+              label="Porcentaje"
+              type="number"
+              value={percent}
+              onChange={handleChange}
+            />
+            <MainButton onClick={handleSubmit}> Destinar </MainButton>
+          </Form>
+        </div>
+        <div className={Styles.wrapTable}>
+          <Text fontSize="22px" fontWeight="bold">
+            Destinación de Gastos
+          </Text>
+          <table className={Styles.table}>
+            <thead>
+              <tr>
+                <th>Tipo de Gasto</th>
+                <th>Monto</th>
+                <th>Porcentaje</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.category}</td>
+                  <td>
+                    {parseInt(
+                      JSON.parse(localStorage.getItem("user")).balance /
+                        item.amount
+                    )}
+                  </td>
+                  <td>{item.amount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </Layout>
   );

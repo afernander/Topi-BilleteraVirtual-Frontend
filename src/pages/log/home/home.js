@@ -62,24 +62,7 @@ function Home() {
 
   return (
     <Layout>
-      <div
-        style={{
-          backgroundColor: "#f5f5f5",
-          borderRadius: "5px",
-          width: "30%",
-          height: "10%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: "0px 0px 5px #red",
-          border: "1px solid black",
-          marginBottom: "80px",
-        }}
-      >
-        <Text variant="h5" color="black">
-          Este es tu saldo actual: {saldo}
-        </Text>
-      </div>
+      
       <div className={Styles.cardHome}>
         {pro.map((promotions, id) => (
           <Button sx={styles} href="/payment" key={promotions.id}>

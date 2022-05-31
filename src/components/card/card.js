@@ -23,7 +23,7 @@ export default function ActionAreaCard({ image, title, description , price, chil
             {description}
           </Typography>
           <Typography variant="h6" color="text.secondary" >
-            $ = {price}
+            $ {price}
           </Typography>
         </CardContent>
       </CardActionArea>
