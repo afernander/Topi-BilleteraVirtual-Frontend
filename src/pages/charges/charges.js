@@ -49,7 +49,7 @@ function Charges() {
         datacharge.password = data.password;
         datacharge.name = data.name;
         datacharge.date = data.date;
-        datacharge.balance = parseInt(data.balance)+parseInt(amount);
+        datacharge.balance = parseInt(data.balance) + parseInt(amount);
         console.log(datacharge);
       });
 
@@ -57,21 +57,18 @@ function Charges() {
   };
 
   const handleSubmit2 = async () => {
-    const data2 = {
-      email: JSON.parse(localStorage.getItem("user")).email,
-      password: JSON.parse(localStorage.getItem("user")).password,
-    };
+    const id = JSON.parse(localStorage.getItem("user")).id;
 
-    await fetch("http://localhost:3000/users/signin", {
-      method: "POST",
+    await fetch("http://localhost:3000/users/" + id, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(data2),
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         localStorage.setItem("user", JSON.stringify(data));
       });
   };
@@ -117,7 +114,7 @@ function Charges() {
             value={amount}
             onChange={handleChange}
           />
-          <MainButton onClick={handleSubmit3} type="submit">
+          <MainButton href="/home" onClick={handleSubmit3} type="submit">
             {" "}
             Recargar{" "}
           </MainButton>
