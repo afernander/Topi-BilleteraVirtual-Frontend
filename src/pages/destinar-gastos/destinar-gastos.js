@@ -116,7 +116,7 @@ function DestinarGastos() {
               value={percent}
               onChange={handleChange}
             />
-            <MainButton onClick={handleSubmit}> Destinar </MainButton>
+            <MainButton href="/destinarGastos" onClick={handleSubmit}> Destinar </MainButton>
           </Form>
         </div>
         <div className={Styles.wrapTable}>

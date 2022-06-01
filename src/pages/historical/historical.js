@@ -1,10 +1,11 @@
-import React from "react";
+import { useState } from "react";
 import Styles from "./historical.module.scss";
 import { Text } from "../../components/text/text";
 import Layout from "../../components/general/layout/layout";
 import { Table } from "@mui/material";
+import React, { useEffect } from "react";
 
-const data = [
+let data2 = [
   {
     id: "1",
     product: "Product 1",
@@ -43,7 +44,39 @@ const data = [
   },
 ]
 
+
 function Historical() {
+
+  const [data, setData] = useState(null);
+
+
+  useEffect(() => {
+    fetch("http://localhost:3000/historical")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw res;
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching data", data);
+      });
+  }, []);
+
+  if (data) {
+    data2 = data.map((item, id) => {
+      return {
+        id: item.id,
+        cuenta: item.cuenta,
+        product: item.product,
+        precio: item.precio,
+      };
+    });
+  }
+
   return (
     <Layout>
       <div className={Styles.container}>
@@ -58,7 +91,7 @@ function Historical() {
             <th>Precio</th>
           </tr>
           <br></br>
-          {data.map((item, i) => (
+          {data2.map((item, i) => (
             <tr key={i}>
               <td>{item.id}</td>
               <td>{item.product}</td>

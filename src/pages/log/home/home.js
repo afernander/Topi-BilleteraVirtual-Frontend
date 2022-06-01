@@ -19,7 +19,7 @@ function Home() {
       id: 1,
       title: "Gimnasio",
       description:
-        "Paga aquí tu membresia del gimnasio vivo! y obten 10% de descuento ",
+        "Paga aquí tu membresia del gimnasio vivo! y obten 10 de descuento ",
       price: 3000,
       image: gym,
     },
@@ -60,9 +60,28 @@ function Home() {
   const saldo0 = JSON.parse(localStorage.getItem('user')).balance;
     const saldo = ((saldo0 + '').replace(reg, '$&.')).replace(",", ".");
 
+
+    useEffect(() => {
+      const id = JSON.parse(localStorage.getItem("user")).id;
+
+      fetch("http://localhost:3000/users/" + id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem("user", JSON.stringify(data));
+        });
+    }, []);
+
   return (
+
     <Layout>
-      
+
       <div className={Styles.cardHome}>
         {pro.map((promotions, id) => (
           <Button sx={styles} href="/payment" key={promotions.id}>
